@@ -1,7 +1,9 @@
 """
 Name: Sarah Khan, Cindy Qian, and Junhee Park
 Group: P077
-...
+Implement main method that analyze pre and post COVID
+Reddit threads by performing data cleaning and plotting
+charts.
 """
 import pandas as pd
 import data_cleaning as data_cleaning
@@ -15,8 +17,6 @@ def analyzing_reddit_thread(file_one: str, file_two: str, thread_name: str) -> N
     # Encoding from: https://stackoverflow.com/questions/5552555/unicodedecodeerror-invalid-continuation-byte
     pre_features = pd.read_csv(file_one, encoding='latin-1')
     post_features = pd.read_csv(file_two, encoding='latin-1')
-    #TODO: Comment the below line
-    print(pre_features.head())
     
     # get data for pre features
     all_percentage_dataframes_pre = []
@@ -49,7 +49,7 @@ def analyzing_reddit_thread(file_one: str, file_two: str, thread_name: str) -> N
 
 
 def main():
-    print("here")
+    print('Starting to process data...')
 
     # we have 2 files,
     #   1 file of all pre-covid subreddit data (manually combined)
@@ -71,15 +71,22 @@ def main():
 
 
     # thread = addiction
+    print('=== ADDICTION THREAD ===')
+    print('Beginning to process data for addiction thread...')
     analyzing_reddit_thread("addiction_pre_features.csv", "addiction_post_features.csv", "addiction")
+    print('Done processing data for addiction thread...')
 
-
-    # UNCOMMENT THIS
-    # fitness
+    # thread = fitness
+    print('=== FITNESS THREAD ===')
+    print('Beginning to process data for fitness thread...')
     analyzing_reddit_thread("fitness_pre_features.csv", "fitness_post_features.csv", "fitness")
+    print('Done processing data for fitness thread...')
 
-    # parenting
+    # thread = parenting
+    print('=== PARENTING THREAD ===')
+    print('Beginning to process data for parenting thread...')
     analyzing_reddit_thread("parenting_pre_features.csv", "parenting_post_features.csv", "parenting")
+    print('Done processing data for parenting thread...')
 
 
 

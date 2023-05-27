@@ -1,7 +1,14 @@
-# our class with all data cleaning methods
+"""
+Name: Sarah Khan, Cindy Qian, and Junhee Park
+Group: P077
+Implement functions that perform data cleaning by getting
+the percentage of unique words, isolation, economic stress,
+substance use, domestic stress, and suicidality from a dataset.
+It also implements a function that combines a list of dataframes
+into a new dataframe.
+"""
+
 import pandas as pd
-# Note: If we included all data, we would likely need to add
-# an attribute for the type of post.
 
 def _get_percentage(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
     """
