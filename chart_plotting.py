@@ -19,7 +19,7 @@ def unique_topic_percentage_chart(data: pd.DataFrame, file_name: str) -> None:
     plt.ylabel("Percentage")
     plt.savefig(file_name, bbox_inches="tight")
 
-def unique_topic_percentage_chart_vega(data: pd.DataFrame) -> None:
+def unique_topic_percentage_chart_vega(data: pd.DataFrame, file_name: str) -> None:
     """
     Takes the data and plots a chart with ______[TODO]
     """
@@ -102,17 +102,41 @@ def unique_topic_percentage_chart_vega(data: pd.DataFrame) -> None:
     #     y='type_of_word',
     #     color='percentage'
     # )
-    melted = melted[melted['month'].dt.year.isin([2018, 2019])]
+    # melted = melted[melted['month'].dt.year.isin([2018, 2019])]
     melted['month'] = melted['month'].astype(str)
-    chart = alt.Chart(melted).mark_bar().encode(
+    # chart = alt.Chart(melted).mark_bar().encode(
+    #     # x='month:O',
+    #     # y='average_stat:Q',
+    #     # color='year(month):N',
+    #     # column='type_of_word:N'
+    #     alt.X('month:N', title='Month'),
+    #     alt.Y('average_stat:Q', title='Average Stat', scale=alt.Scale(domain=[0, 100])),
+    #     alt.Color('month:N', scale=alt.Scale(domain=['2018', '2019'], range=['#1f77b4', '#ff7f0e'])),
+    #     alt.Column('type_of_word:N')
+    # ).properties(
+    #     width=200
+    # )
+
+    # chart2 = alt.Chart(melted).mark_bar().encode(
+    #     # x='month:O',
+    #     # y='average_stat:Q',
+    #     # color='year(month):N',
+    #     # column='type_of_word:N'
+    #     x='month',
+    #     y='average_stat',
+    #     column='type_of_word',
+    # ).properties(
+    #     width=200
+    # )
+    melted = melted[melted['type_of_word'] != 'average_n_unique_words']
+    chart2 = alt.Chart(melted).mark_line().encode(
         # x='month:O',
         # y='average_stat:Q',
         # color='year(month):N',
         # column='type_of_word:N'
-        x=alt.X('month:N', title='Month'),
-        y=alt.Y('average_stat:Q', title='Average Stat', scale=alt.Scale(domain=[0, 100])),
-        color=alt.Color('month:N', scale=alt.Scale(domain=['2018', '2019'], range=['#1f77b4', '#ff7f0e'])),
-        column='type_of_word:N'
+        x='month',
+        y='average_stat',
+        column='type_of_word',
     ).properties(
         width=200
     )
@@ -121,5 +145,7 @@ def unique_topic_percentage_chart_vega(data: pd.DataFrame) -> None:
     # date | average | type_of_word (so that there are five )
     
 
-    chart.save('chart.html')
+    # chart.save('chart.html')
+    file = 'chart_' + file_name + '.html'
+    chart2.save(file)
 
