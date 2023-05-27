@@ -23,25 +23,63 @@ def unique_topic_percentage_chart_vega(data: pd.DataFrame) -> None:
     """
     Takes the data and plots a chart with ______[TODO]
     """
-    print("TYPES")
-    print(data.dtypes)
+    # print("TYPES")
+    # print(data.dtypes)
     print("PREDATA: ")
     print(data)
+
+    # example = data[data['date'] =='2019/09/11']
+    # print("EXAMPLE")
+    # print(example)
+    # example = example.groupby('post')
+    # print(example)
     # data = data.groupby('date', as_index=False).agg({'percentage': 'mean', 'type_of_word': 'first'})
     
-    grouped = data.groupby(['date', 'type_of_word'])['percentage'].mean().reset_index()
+    # grouped = data.groupby(['date', 'type_of_word'])['percentage'].mean().reset_index()
 
-    # Pivot the DataFrame to have separate columns for each type_of_word
-    pivoted = grouped.pivot(index='date', columns='type_of_word', values='percentage').reset_index()
+    # # Pivot the DataFrame to have separate columns for each type_of_word
+    # pivoted = grouped.pivot(index='date', columns='type_of_word', values='percentage').reset_index()
+    # print("SOFAR: ")
+    # print(pivoted)
 
-    # Rename the columns to include the prefix 'average_' and fill any missing values with 0
-    pivoted.columns = ['date'] + ['average_' + col for col in pivoted.columns[1:]]
-    pivoted = pivoted.fillna(0)
+    # # Add a new column for the average percentage of all type_of_words
+    # numeric_columns = pivoted.columns[1:]  # Exclude the 'date' column
+    # pivoted['average_percentage'] = pivoted[numeric_columns].mean(axis=1)
+    pivoted = data.pivot_table(index=['date', 'post'], columns='type_of_word', values='percentage', aggfunc='mean')
+
+    # Reset the index to flatten the pivoted DataFrame
+    pivoted = pivoted.reset_index()
+
+    # Rename the columns to include the 'average_' prefix
+    pivoted.columns = ['date', 'post'] + ['average_' + col for col in pivoted.columns[2:]]
+
+    # Print the resulting DataFrame
+    # print(pivoted)
    
    #  data.drop('percentage').transform()
     # data.append(grouped)
     print("AFTER: ")
     print(pivoted)
+    pivoted['date'] = pd.to_datetime(pivoted['date'])
+
+    # Extract the month from the 'date' column and create a new 'month' column
+    pivoted['month'] = pivoted['date'].dt.to_period('M')
+
+    grouped = pivoted.groupby('month', as_index=False)[pivoted.columns[2:]].mean()
+    # Dropping any malformatted data
+    grouped = grouped[grouped['month'] != 0]
+
+    print("GROUP: ")
+    print(grouped)
+
+    # Reshape the DataFrame using melt
+    melted = grouped.melt(id_vars=['month'], var_name='type_of_word', value_name='average_stat')
+
+    # Sort the DataFrame by 'month' and 'type_of_word' columns
+    melted = melted.sort_values(by=['month', 'type_of_word']).reset_index(drop=True)
+
+    print("MELTED")
+    print(melted)
 
     # chart = alt.Chart(data).mark_rect().encode(
     #     alt.X('date:O').title('date'),
@@ -64,12 +102,23 @@ def unique_topic_percentage_chart_vega(data: pd.DataFrame) -> None:
     #     y='type_of_word',
     #     color='percentage'
     # )
-    chart = alt.Chart(pivoted).mark_bar().encode(
-        x='date:O',
-        y='sum(yield):Q',
-        color='year:N',
-        column='site:N'
+    melted = melted[melted['month'].dt.year.isin([2018, 2019])]
+    melted['month'] = melted['month'].astype(str)
+    chart = alt.Chart(melted).mark_bar().encode(
+        # x='month:O',
+        # y='average_stat:Q',
+        # color='year(month):N',
+        # column='type_of_word:N'
+        x=alt.X('month:N', title='Month'),
+        y=alt.Y('average_stat:Q', title='Average Stat', scale=alt.Scale(domain=[0, 100])),
+        color=alt.Color('month:N', scale=alt.Scale(domain=['2018', '2019'], range=['#1f77b4', '#ff7f0e'])),
+        column='type_of_word:N'
+    ).properties(
+        width=200
     )
+
+    # Want a schema:
+    # date | average | type_of_word (so that there are five )
     
 
     chart.save('chart.html')

@@ -80,6 +80,7 @@ import chart_plotting as chart
 def analyzing_reddit_thread(file_one: str, file_two: str) -> None:
     pre_features = pd.read_csv(file_one)
     post_features = pd.read_csv(file_two)
+    #TODO: Comment the below line
     print(pre_features.head())
     
     # get data for pre features
@@ -135,11 +136,13 @@ def main():
     # thread = addiction
     analyzing_reddit_thread("addiction_pre_features.csv", "addiction_post_features.csv")
 
+
+    # UNCOMMENT THIS
     # fitness
-    analyzing_reddit_thread("fitness_pre_featuress.csv", "fitness_post_featuress.csv")
+    # analyzing_reddit_thread("fitness_pre_features.csv", "fitness_post_features.csv")
 
     # parenting
-    analyzing_reddit_thread("parenting_pre_featuress.csv", "parentingn_post_features.csv")
+    # analyzing_reddit_thread("parenting_pre_features.csv", "parenting_post_features.csv")
 
 
 

@@ -7,21 +7,25 @@
 ## **How to Install Required Libraries**
 ### _Note: After downloading all of the required libraries, restart the Visual Studio Code._
 - How to install _Pandas_ in Visual Studio Code:
+
     - Open Terminal
     - Type: "pip install pandas"
 <br>
 <br>
 - How to install _Seaborn_ in Visual Studio Code:
+
     - Open Terminal
     - Type: "pip install seaborn"
 <br>
 <br>
 - How to install _altair_ in Visual Studio Code:
+
     - Open Terminal
     - Type: "pip install altair"
 <br>
 <br>
 - How to install _vega_datasets_ Visual Studio Code:
+
     - Open Terminal
     - Type: "pip install vega_datasets"
 <br>
