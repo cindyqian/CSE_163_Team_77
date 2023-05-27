@@ -136,9 +136,11 @@ def main():
     analyzing_reddit_thread("addiction_pre_features.csv", "addiction_post_features.csv")
 
     # fitness
-    analyzing_reddit_thread
+    analyzing_reddit_thread("fitness_pre_featuress.csv", "fitness_post_featuress.csv")
 
     # parenting
+    analyzing_reddit_thread("parenting_pre_featuress.csv", "parentingn_post_features.csv")
+
 
 
 if __name__ == '__main__':
