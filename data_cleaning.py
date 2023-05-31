@@ -10,6 +10,7 @@ into a new dataframe.
 
 import pandas as pd
 
+
 def _get_percentage(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
     """
     Given a column name and data, computes the percentage of the
@@ -19,7 +20,7 @@ def _get_percentage(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
     representing each Reddit post, the first column being
     the post, the second column being the data,
     the third column being the percentage, and the fourth
-    column being the type_of_word. 
+    column being the type_of_word.
     Use the columns passed-in and n_words to calculate
     the percentage.
     Assumes column_name is found in the dataset.
@@ -29,10 +30,6 @@ def _get_percentage(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
     df['date'] = data['date']
     df['percentage'] = data[column_name] / data['n_words'] * 100.0
     df['type_of_word'] = column_name
-    # df = df.reset_index()
-    # df = df.rename(columns={'index' : 'index_' + column_name}) # Rename the index column
-    # df = df.set_index('index_' + column_name)  # Set the index column as the new index
-    # df["unique_id"] = data[column_name] + data['index_' + column_name]
     return df
 
 
@@ -44,11 +41,12 @@ def get_unique_word_percentage(data: pd.DataFrame) -> pd.DataFrame:
     representing each Reddit post, the first column being
     the post, the second column being the data,
     the third column being the percentage, and the fourth
-    column being the type_of_word. 
+    column being the type_of_word.
     Use the columns n_unique_words and n_words to calculate
     the percentage.
     """
     return _get_percentage(data, 'n_unique_words')
+
 
 def get_isolation_percentage(data: pd.DataFrame) -> pd.DataFrame:
     """
@@ -63,6 +61,7 @@ def get_isolation_percentage(data: pd.DataFrame) -> pd.DataFrame:
     """
     return _get_percentage(data, 'isolation_total')
 
+
 def get_economic_stress_percentage(data: pd.DataFrame) -> pd.DataFrame:
     """
     Takes the data and computes the percentage of words related
@@ -76,6 +75,7 @@ def get_economic_stress_percentage(data: pd.DataFrame) -> pd.DataFrame:
     """
     return _get_percentage(data, 'economic_stress_total')
 
+
 def get_substance_use_percentage(data: pd.DataFrame) -> pd.DataFrame:
     """
     Takes the data and computes the percentage of words related
@@ -88,6 +88,7 @@ def get_substance_use_percentage(data: pd.DataFrame) -> pd.DataFrame:
     and n_words to calculate the percentage.
     """
     return _get_percentage(data, 'substance_use_total')
+
 
 def get_domestic_stress_percentage(data: pd.DataFrame) -> pd.DataFrame:
     """
@@ -115,6 +116,7 @@ def get_suicidality_percentage(data: pd.DataFrame) -> pd.DataFrame:
     and n_words to calculate the percentage.
     """
     return _get_percentage(data, 'suicidality_total')
+
 
 def combine_dataframes(data: list[pd.DataFrame]) -> pd.DataFrame:
     """
