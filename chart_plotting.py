@@ -17,9 +17,9 @@ def unique_topic_percentage_chart(data: pd.DataFrame, file_name: str) -> None:
     """
 
     # Note: Make intervals into months for time
-    sns.relplot(x="date", y="percentage", kind="line", hue="type_of_word", data=data, legend=True)
+    sns.relplot(x="date", y="percentage", kind="line", hue="type_of_word", data=data, legend=True, ci=None)
     plt.title("Percentages of Topic Word Usage over Time")
-    plt.xlabel("Year")
+    plt.xlabel("Date")
     plt.ylabel("Percentage")
     plt.savefig(file_name, bbox_inches="tight")
 
