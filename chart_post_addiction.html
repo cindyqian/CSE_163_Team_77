@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c5be8e13d2fb695d6c3d289f468df26e"}, "mark": {"type": "line"}, "encoding": {"column": {"field": "type_of_word", "type": "nominal"}, "x": {"field": "month", "type": "nominal"}, "y": {"field": "average_stat", "type": "quantitative"}}, "width": 200, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-c5be8e13d2fb695d6c3d289f468df26e": [{"month": "2020-01", "type_of_word": "average_domestic_stress_total", "average_stat": 0.10271630951537594}, {"month": "2020-01", "type_of_word": "average_economic_stress_total", "average_stat": 0.30632786341766477}, {"month": "2020-01", "type_of_word": "average_isolation_total", "average_stat": 0.0709650300932806}, {"month": "2020-01", "type_of_word": "average_substance_use_total", "average_stat": 1.207977485422029}, {"month": "2020-01", "type_of_word": "average_suicidality_total", "average_stat": 0.05562625882297847}, {"month": "2020-02", "type_of_word": "average_domestic_stress_total", "average_stat": 0.10511056999977296}, {"month": "2020-02", "type_of_word": "average_economic_stress_total", "average_stat": 0.3620259206391259}, {"month": "2020-02", "type_of_word": "average_isolation_total", "average_stat": 0.08648694623096197}, {"month": "2020-02", "type_of_word": "average_substance_use_total", "average_stat": 1.2131586177398503}, {"month": "2020-02", "type_of_word": "average_suicidality_total", "average_stat": 0.03327326804737669}, {"month": "2020-03", "type_of_word": "average_domestic_stress_total", "average_stat": 0.11388065871397028}, {"month": "2020-03", "type_of_word": "average_economic_stress_total", "average_stat": 0.3517802663128803}, {"month": "2020-03", "type_of_word": "average_isolation_total", "average_stat": 0.15153513340281807}, {"month": "2020-03", "type_of_word": "average_substance_use_total", "average_stat": 1.2479735289356488}, {"month": "2020-03", "type_of_word": "average_suicidality_total", "average_stat": 0.04381343997137138}, {"month": "2020-04", "type_of_word": "average_domestic_stress_total", "average_stat": 0.04702948191037884}, {"month": "2020-04", "type_of_word": "average_economic_stress_total", "average_stat": 0.33660808920003216}, {"month": "2020-04", "type_of_word": "average_isolation_total", "average_stat": 0.20021892070738195}, {"month": "2020-04", "type_of_word": "average_substance_use_total", "average_stat": 1.1758337584888907}, {"month": "2020-04", "type_of_word": "average_suicidality_total", "average_stat": 0.04095771119610394}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

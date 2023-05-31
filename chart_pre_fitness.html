@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-0c4c4c97333f077f2b241ee3d68fcd87"}, "mark": {"type": "line"}, "encoding": {"column": {"field": "type_of_word", "type": "nominal"}, "x": {"field": "month", "type": "nominal"}, "y": {"field": "average_stat", "type": "quantitative"}}, "width": 200, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-0c4c4c97333f077f2b241ee3d68fcd87": [{"month": "2019-03", "type_of_word": "average_domestic_stress_total", "average_stat": 0.011416232600617644}, {"month": "2019-03", "type_of_word": "average_economic_stress_total", "average_stat": 0.44832764037717915}, {"month": "2019-03", "type_of_word": "average_isolation_total", "average_stat": 0.03728651674535945}, {"month": "2019-03", "type_of_word": "average_substance_use_total", "average_stat": 0.20921385398398137}, {"month": "2019-03", "type_of_word": "average_suicidality_total", "average_stat": 0.008074511723678375}, {"month": "2019-04", "type_of_word": "average_domestic_stress_total", "average_stat": 0.007515540618184061}, {"month": "2019-04", "type_of_word": "average_economic_stress_total", "average_stat": 0.4159971088499981}, {"month": "2019-04", "type_of_word": "average_isolation_total", "average_stat": 0.031951499324812206}, {"month": "2019-04", "type_of_word": "average_substance_use_total", "average_stat": 0.19946263630751782}, {"month": "2019-04", "type_of_word": "average_suicidality_total", "average_stat": 0.009911593234081984}, {"month": "2019-05", "type_of_word": "average_domestic_stress_total", "average_stat": 0.013398015205114145}, {"month": "2019-05", "type_of_word": "average_economic_stress_total", "average_stat": 0.45452308344285125}, {"month": "2019-05", "type_of_word": "average_isolation_total", "average_stat": 0.02849395741343783}, {"month": "2019-05", "type_of_word": "average_substance_use_total", "average_stat": 0.19019116175261883}, {"month": "2019-05", "type_of_word": "average_suicidality_total", "average_stat": 0.010093993714276413}, {"month": "2019-06", "type_of_word": "average_domestic_stress_total", "average_stat": 0.010029350945086791}, {"month": "2019-06", "type_of_word": "average_economic_stress_total", "average_stat": 0.42785558835631415}, {"month": "2019-06", "type_of_word": "average_isolation_total", "average_stat": 0.03871612075062662}, {"month": "2019-06", "type_of_word": "average_substance_use_total", "average_stat": 0.18952111088185017}, {"month": "2019-06", "type_of_word": "average_suicidality_total", "average_stat": 0.015053995484532024}, {"month": "2019-07", "type_of_word": "average_domestic_stress_total", "average_stat": 0.005168073492886503}, {"month": "2019-07", "type_of_word": "average_economic_stress_total", "average_stat": 0.44593370829595824}, {"month": "2019-07", "type_of_word": "average_isolation_total", "average_stat": 0.041056711640438115}, {"month": "2019-07", "type_of_word": "average_substance_use_total", "average_stat": 0.18494405997219532}, {"month": "2019-07", "type_of_word": "average_suicidality_total", "average_stat": 0.008896705676075268}, {"month": "2019-08", "type_of_word": "average_domestic_stress_total", "average_stat": 0.010681319028603468}, {"month": "2019-08", "type_of_word": "average_economic_stress_total", "average_stat": 0.4712910112037428}, {"month": "2019-08", "type_of_word": "average_isolation_total", "average_stat": 0.02996970009081716}, {"month": "2019-08", "type_of_word": "average_substance_use_total", "average_stat": 0.18423315813072563}, {"month": "2019-08", "type_of_word": "average_suicidality_total", "average_stat": 0.008973877598981867}, {"month": "2019-09", "type_of_word": "average_domestic_stress_total", "average_stat": 0.015395255966585142}, {"month": "2019-09", "type_of_word": "average_economic_stress_total", "average_stat": 0.4274188537840438}, {"month": "2019-09", "type_of_word": "average_isolation_total", "average_stat": 0.03863463561251538}, {"month": "2019-09", "type_of_word": "average_substance_use_total", "average_stat": 0.21178526443222606}, {"month": "2019-09", "type_of_word": "average_suicidality_total", "average_stat": 0.009878865290953817}, {"month": "2019-10", "type_of_word": "average_domestic_stress_total", "average_stat": 0.010959313637428993}, {"month": "2019-10", "type_of_word": "average_economic_stress_total", "average_stat": 0.4194858542437355}, {"month": "2019-10", "type_of_word": "average_isolation_total", "average_stat": 0.03863355946261588}, {"month": "2019-10", "type_of_word": "average_substance_use_total", "average_stat": 0.21976626506117158}, {"month": "2019-10", "type_of_word": "average_suicidality_total", "average_stat": 0.012226730817740894}, {"month": "2019-11", "type_of_word": "average_domestic_stress_total", "average_stat": 0.0}, {"month": "2019-11", "type_of_word": "average_economic_stress_total", "average_stat": 0.5608604918110409}, {"month": "2019-11", "type_of_word": "average_isolation_total", "average_stat": 0.0}, {"month": "2019-11", "type_of_word": "average_substance_use_total", "average_stat": 0.2876724619638762}, {"month": "2019-11", "type_of_word": "average_suicidality_total", "average_stat": 0.0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
