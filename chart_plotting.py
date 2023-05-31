@@ -15,8 +15,7 @@ def unique_topic_percentage_chart(data: pd.DataFrame, file_name: str) -> None:
     the total percentages found for the different topic areas.
     Let the x-axis be time and the y-axis be the percentage.
     """
-
-    # Note: Make intervals into months for time
+    # Note: Next steps is to make intervals into months for time
     sns.relplot(x="date", y="percentage", kind="line", hue="type_of_word", data=data, legend=True, ci=None)
     plt.title("Percentages of Topic Word Usage over Time")
     plt.xlabel("Date")
@@ -25,7 +24,10 @@ def unique_topic_percentage_chart(data: pd.DataFrame, file_name: str) -> None:
 
 def unique_topic_percentage_chart_vega(data: pd.DataFrame, file_name: str) -> None:
     """
-    Takes the data and plots a chart with ______[TODO]
+    Takes the Pandas DataFrame calls 'data' and string value of file name
+    calls 'file_name' to plot a chart with lines for each of the total percentages
+    found for the different topic areas using Vega Altair. Group the datasets by
+    each month. The X-Axis is month and the Y-Axis is average percentage.
     """
     pivoted = data.pivot_table(index=['date', 'post'], columns='type_of_word', values='percentage', aggfunc='mean')
 

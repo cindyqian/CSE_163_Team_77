@@ -12,7 +12,15 @@ import chart_plotting as chart
 
 def analyzing_reddit_thread(file_one: str, file_two: str, thread_name: str) -> None:
     """
-    TODO: Write a comment here
+    This function takes the string parameters called 'file_one' which is a file path to the pre-feature data, 
+    'file_two' which is a file path to the post-feature data, and 'thread_name' which is
+    the name of the Reddit thread. Create a list of data frames by the percentage of
+    isolation, economic stress, substance use, domestic stress, and suicidality in the
+    pre-feature dataset. 
+    Also create a list of data frames by the percentage of isolation, economic stress,
+    substance use, 
+    domestic stress, and suicidality in the post-feature dataset. 
+    Combine those two lists of data frames and plot the charts.
     """
     # Encoding from: https://stackoverflow.com/questions/5552555/unicodedecodeerror-invalid-continuation-byte
     pre_features = pd.read_csv(file_one, encoding='latin-1')
